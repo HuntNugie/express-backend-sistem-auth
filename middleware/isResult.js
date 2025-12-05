@@ -3,7 +3,7 @@ import {config} from "dotenv";
 import User from "../src/models/User.js";
 config();
 const salt_hash = 10;
-
+// untuk hasil yang mempermudah controller register
 export const isResultRegister = async (req, res, next) => {
     const obj = {
         email: req.body.email,
@@ -20,6 +20,7 @@ export const isResultRegister = async (req, res, next) => {
     next();
 };
 
+// untuk hasil yang mempermudah controller login
 export const isResultLogin = async (req, res, next) => {
     try {
         const {email, password} = req.body;

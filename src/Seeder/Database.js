@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 
+// untuk mengetess seeder dan mengetes jalan nya orm prisma
 async function main() {
     await User.create({
         data: {

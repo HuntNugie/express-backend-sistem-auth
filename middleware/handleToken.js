@@ -1,5 +1,5 @@
 import {verify} from "../utils/jwt.js";
-
+// untuk menghandle token jwt 
 export default function handleToken(req, res, next) {
     // mendapatkan cookies
     const token = req.cookies.token;
