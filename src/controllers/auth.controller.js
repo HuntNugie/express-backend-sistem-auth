@@ -16,3 +16,11 @@ export const register = async (req, res) => {
         return res.status(400).json(error);
     }
 };
+
+export const login = async(req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}

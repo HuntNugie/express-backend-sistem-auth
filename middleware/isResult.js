@@ -1,7 +1,12 @@
-export const isResult = async (req, res, next) => {
+import bcrypt from "bcrypt";
+import {config} from "dotenv";
+config();
+const salt_hash = 10;
+
+export const isResultRegister = async (req, res, next) => {
     const obj = {
         email: req.body.email,
-        password: req.body.password,
+        password: await bcrypt.hash(req.body.password, salt_hash),
         profile: {
             create: {
                 nama: req.body.nama,

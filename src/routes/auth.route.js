@@ -1,11 +1,14 @@
-import { Router } from "express";
-import { registerValid } from "../../middleware/validation/register.valid.js";
+import {Router} from "express";
+import {registerValid} from "../../middleware/validation/register.valid.js";
 import handleValidation from "../../middleware/handleValidation.js";
-import { register } from "../controllers/auth.controller.js";
-import { isResult } from "../../middleware/isResult.js";
+import {login, register} from "../controllers/auth.controller.js";
+import {isResultRegister} from "../../middleware/isResult.js";
 
 const route = Router();
 
-route.post("/register",registerValid,handleValidation,isResult,register)
+// untuk register
+route.post("/register", registerValid, handleValidation, isResultRegister, register);
 
-export default route
+// untuk login
+route.post("/login", login);
+export default route;
