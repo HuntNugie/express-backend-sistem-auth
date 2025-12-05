@@ -26,8 +26,14 @@ export const login = (req, res) => {
         httpOnly: true,
         sameSite: "none",
         secure: true,
+        // ini baru 3 menit
         maxAge: 3 * 60 * 1000,
     });
 
     return res.status(200).json({status: true, message: "berhasil login"});
+};
+
+export const checkMe = (req, res) => {
+    const payload = req.result;
+    return res.status(200).json({status: true, data: payload});
 };
