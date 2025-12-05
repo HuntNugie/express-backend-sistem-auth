@@ -1,7 +1,8 @@
+import {sign} from "../../utils/jwt.js";
 import User from "../models/User.js";
 export const register = async (req, res) => {
     try {
-        console.log(req.result)
+        console.log(req.result);
         const tambah = await User.create({
             data: req.result,
             include: {
@@ -17,10 +18,16 @@ export const register = async (req, res) => {
     }
 };
 
-export const login = async(req,res)=>{
-    try {
-        
-    } catch (error) {
-        
-    }
-}
+export const login = (req, res) => {
+    const payload = req.result;
+    // buat sign jwt
+    const token = sign(payload);
+    res.cookie("token", token, {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        maxAge: 3 * 60 * 1000,
+    });
+
+    return res.status(200).json({status: true, message: "berhasil login"});
+};
